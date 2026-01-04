@@ -1,6 +1,6 @@
-import { runInspectionTime } from "./tasks/inspectionTime.js";
-import { runDigitSpan } from "./tasks/digitSpan.js";
-import { runFlanker } from "./tasks/flanker.js";
+import { runInspectionTime } from "./inspectionTime.js";
+import { runDigitSpan } from "./digitSpan.js";
+import { runFlanker } from "./flanker.js";
 
 const app = document.getElementById("app");
 let studyID = null;
