@@ -42,7 +42,9 @@ function renderFrontPage() {
   `;
 
   document.getElementById("startBtn").addEventListener("click", () => {
-    transitionTo(renderBeforeYouBegin);
+    studyID = localStorage.getItem("studyID") ?? generateStudyID();
+    localStorage.setItem("studyID", studyID);
+    //transitionTo(renderBeforeYouBegin);
   });
 }
 
@@ -124,8 +126,8 @@ function renderBeforeYouBegin() {
     <h1>Before You Begin</h1>
 
     <p>
-      This activity is part of a Xaverian capstone project examining performance on
-      short cognitive tasks. Participation is voluntary, and you may stop at any time.
+      This activity is part of a Xaverian Brothers High School Science Research & Capstone project examining the relationship between performance on
+      short cognitive tasks and standardized test scores. Participation is voluntary, results and test scores are anonymous, and you may stop at any time.
     </p>
 
     <p>
@@ -134,7 +136,7 @@ function renderBeforeYouBegin() {
 
     <label>
       <input type="checkbox" id="scoreCheck">
-      I have a PSAT, SAT, or ACT score that I can report at the end of these tasks.
+      I have a PSAT, SAT, or ACT score that I can anonymously report at the end of these tasks.
     </label>
 
     <br><br>
@@ -143,6 +145,16 @@ function renderBeforeYouBegin() {
       <input type="checkbox" id="assentCheck">
       I understand this study is voluntary and choose to participate.
     </label>
+
+    <h2>Your Study ID</h2>
+
+    <p style="font-size: 1.2rem; letter-spacing: 2px;">
+      <strong>${studyID}</strong>
+    </p>
+
+    <p style="color:#b8b8b8;">
+      Please copy this exact ID and enter it into the Google Form at the end of the test. You DO NOT need to memorize your results on these tests.
+    </p>
 
     <br><br>
 
@@ -162,11 +174,6 @@ function renderBeforeYouBegin() {
   assentCheck.addEventListener("change", updateButton);
 
   continueBtn.addEventListener("click", async () => {
-    studyID = localStorage.getItem("studyID") ?? generateStudyID();
-    localStorage.setItem("studyID", studyID);
-
-    console.log("Study ID:", studyID);
-
     const ITResults = await runInspectionTime(app);
     allResults.push(ITResults);
 
