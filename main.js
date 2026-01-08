@@ -44,7 +44,7 @@ function renderFrontPage() {
   document.getElementById("startBtn").addEventListener("click", () => {
     studyID = localStorage.getItem("studyID") ?? generateStudyID();
     localStorage.setItem("studyID", studyID);
-    //transitionTo(renderBeforeYouBegin);
+    transitionTo(renderBeforeYouBegin);
   });
 }
 
